@@ -1,14 +1,37 @@
 .frame {
     width: 100%;
-    height: calc(100vh - 98px);
+    // height: calc(100vh - 98px);
     // margin-top: -98px;
+    height: 100%;
+    padding: 50px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-repeat: no-repeat;
-    background-position: center;
-
+    z-index: 1;
+    .background {
+        position: absolute;
+        z-index: 1;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
     .left-section {
+        position: relative;
+        .decoration-line1 {
+            position: absolute;
+            top: -220px;
+            left: 0;
+        }
+        .decoration-line2 {
+            position: absolute;
+            bottom: -220px;
+            right: 0;
+        }
+        z-index: 2;
         h1 {
             max-width: 350px;
             width: 100%;
@@ -37,6 +60,7 @@
         border-radius: 15px;
         display: flex;
         flex-wrap: wrap;
+        z-index: 2;
 
         .right-section-calculator {
             width: 100%;
@@ -253,7 +277,7 @@
             width: 100%;
             margin: 0 20px 0 20px;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
 
             &_item {
                 width: 100%;
@@ -315,7 +339,7 @@
 
         .shipping-item-sizes {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             width: 100%;
             margin: 0 20px 10px 20px;
 
@@ -444,6 +468,37 @@
                 border-radius: 0px 0px 10px 10px;
                 color: #fff;
                 font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .frame {
+        flex-direction: column;
+        .left-section {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .frame {
+        .right-section {
+            width: 100%;
+    
+            .shipping-types {
+                &_item {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+            }
+    
+            .shipping-item-sizes {
+                &_fields {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
             }
         }
     }
