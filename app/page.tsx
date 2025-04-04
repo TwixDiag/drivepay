@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
 export default function Page() {
-    const url = '/ru';
+    const url = '/drivepay/ru';
     redirect(url);
 }
