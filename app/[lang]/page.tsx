@@ -1,5 +1,5 @@
 import '../../styles/Home.scss';
-import Card from '@/components/Card/Card';
+import Card from '@/components/Registration/Registration';
 
 const dict: any = {
   lt: {

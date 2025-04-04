@@ -83,33 +83,28 @@ export default function Navigation() {
                 <div className={clsx("link", pathName === `/${lang}/` && 'select')}>
                     <Link href={`/${lang}`}>
                         <img src={Home.src} alt="Home" />
-                        {home}
                     </Link>
                 </div>
                 <div className={clsx("link", pathName === `/${lang}/airport/` && 'select')}>
                     <Link href={`/${lang}/airport`}>
                         <img src={Airport.src} alt="Airport" />
-                        {airport}
                     </Link>
                 </div>
                 <div className={clsx("link", pathName === `/${lang}/bus-station/` && 'select')}>
                     <Link href={`/${lang}/bus-station`}>
                         <img src={Bus.src} alt="Bus station" />
-                        {busstation}
                     </Link>
                 </div>
                 <div className={clsx("link", pathName === `/${lang}/vehicle/` && 'select')}>
                     <Link href={`/${lang}/vehicle`}>
                         <img src={Vehicle.src} alt="Vehicle" />
-                        {vehicle}
                     </Link>
                 </div>
-                <div className={clsx("link", pathName === `/${lang}/settings/` && 'select')}>
+                {/* <div className={clsx("link", pathName === `/${lang}/settings/` && 'select')}>
                     <Link href={`/${lang}/settings`}>
                         <img src={Settings.src} alt="Settings" />
-                        {settings}
                     </Link>
-                </div>
+                </div> */}
                 {/* <div className={clsx("link", "language")} onClick={() => languageList ? setlanguageList(false) : setlanguageList(true)}>
                     <img src={(flags[lang] ?? FlagLT).src} width={15} alt={`spalvotapasaka.lt ${language}`} />
                     <span>{lang ? lang.toUpperCase() : 'LT'}</span>
