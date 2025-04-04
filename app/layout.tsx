@@ -23,6 +23,6 @@ export default function RootLayout({
 export const metadata = {
   title: {
     template: 'DrivePay - %s',
-    default: 'DrivePay test2', // a default is required when creating a template
+    default: 'DrivePay test3', // a default is required when creating a template
   }
 }
