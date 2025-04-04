@@ -1,20 +1,17 @@
 import '../../styles/Home.scss';
-import BackgroundImage from '../../assets/frame1_bg.png';
-import decorationLine1 from '../../assets/line1.svg';
-import decorationLine2 from '../../assets/line2.svg';
 import Card from '@/components/Card/Card';
 
 const dict: any = {
   lt: {
-    title: 'Saugus krovinių ir siuntinių pervežimas visoje Lietuvoje',
+    title: 'Stebekite savo darbo laika ir valdykite pajamas',
     transportationRequest: 'Pateikti pervežimo užklausą',
   },
   en: {
-    title: 'Safe transportation of cargo and parcels throughout Lithuania',
+    title: 'Stebekite savo darbo laika ir valdykite pajamas',
     transportationRequest: 'Submit a transportation request'
   },
   ru: {
-    title: 'Безопасная перевозка грузов и посылок по Литве',
+    title: 'Stebekite savo darbo laika ir valdykite pajamas',
     transportationRequest: 'Отправить запрос на перевозку'
   }
 }
@@ -26,17 +23,6 @@ export default function Home({ params }: any) {
 
   return (
     <div className="frame">
-      <div className="background" style={{ backgroundImage: `url(${BackgroundImage.src})` }}></div>
-      <div className="left-section">
-        <div className="decoration-line1">
-          <img src={decorationLine1.src} alt="" />
-        </div>
-        <h1>{title}</h1>
-        <a href="/transportation-request">{transportationRequest}</a>
-        <div className="decoration-line2">
-          <img src={decorationLine2.src} alt="" />
-        </div>
-      </div>
       <Card />
     </div>
   );
@@ -44,10 +30,10 @@ export default function Home({ params }: any) {
 
 export async function generateMetadata({ params }: any) {
   if (params.lang === 'en') {
-    return { title: 'Safe transportation of cargo and parcels throughout Lithuania' }
+    return { title: 'drive smart, earn fast' }
   }
   if (params.lang === 'ru') {
-    return { title: 'Безопасная перевозка грузов и посылок по Литве' }
+    return { title: 'drive smart, earn fast' }
   }
-  return { title: 'Saugus krovinių ir siuntinių pervežimas visoje Lietuvoje' }
+  return { title: 'drive smart, earn fast' }
 }

@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer/Footer';
-import Header from '@/components/Header/Header';
+import Navigation from '@/components/Navigation/Navigation';
 import { Fragment } from 'react';
 
 
@@ -10,9 +10,9 @@ export default function Layout({
 }) {
     return (
         <Fragment>
-            <Header />
             {children}
-            <Footer />
+            <Navigation />
+            {/* <Footer /> */}
         </Fragment>
     );
 }

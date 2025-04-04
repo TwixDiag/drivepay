@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 
 export default function Page() {
-    redirect('/lt');
+    const url = '/lt';
+    redirect(url);
 }

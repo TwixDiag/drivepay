@@ -1,6 +1,6 @@
 const translate: any = {
     lt: {
-        title: 'Kontaktai'
+        title: 'Nustatymai'
     },
     en: {
         title: 'Contacts'
@@ -10,23 +10,25 @@ const translate: any = {
     }
 }
 
-export default function Contacts({params: {lang}}: any) {
-    
+export default function Settings({ params: { lang } }: any) {
+
     const t = translate[lang];
 
     return (
-        <div className="contacts">
-            <h1>{t.title}</h1>
+        <div className="content">
+            <div className="title">
+                <h1>{t.title}</h1>
+            </div>
         </div>
     )
 }
 
 export async function generateMetadata({ params }: any) {
     if (params.lang === 'en') {
-      return { title: 'Contacts' }
+        return { title: 'Contacts' }
     }
     if (params.lang === 'ru') {
-      return { title: 'Контакты' }
+        return { title: 'Контакты' }
     }
     return { title: 'Kontaktai' }
 }
