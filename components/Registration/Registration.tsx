@@ -98,44 +98,6 @@ function deleteCookie(name: string, path = '/') {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}`;
 }
 
-function uploadData() {
-    const cityElement = document.getElementById('city') as HTMLInputElement | null;
-    const payElement = document.getElementById('pay') as HTMLInputElement | null;
-
-    if (!cityElement || !payElement) {
-        console.error("Элементы не найдены");
-        return;
-    }
-
-    const city = cityElement.value;
-    const pay = payElement.value;
-
-    const workTime = {
-        // day1: `${(document.getElementById('timefrom1') as HTMLInputElement)?.value} - ${(document.getElementById('timeto1') as HTMLInputElement)?.value}`,
-        // day2: `${(document.getElementById('timefrom2') as HTMLInputElement)?.value} - ${(document.getElementById('timeto2') as HTMLInputElement)?.value}`,
-        // day3: `${(document.getElementById('timefrom3') as HTMLInputElement)?.value} - ${(document.getElementById('timeto3') as HTMLInputElement)?.value}`,
-        // day4: `${(document.getElementById('timefrom4') as HTMLInputElement)?.value} - ${(document.getElementById('timeto4') as HTMLInputElement)?.value}`,
-        // day5: `${(document.getElementById('timefrom5') as HTMLInputElement)?.value} - ${(document.getElementById('timeto5') as HTMLInputElement)?.value}`,
-        // day6: `${(document.getElementById('timefrom6') as HTMLInputElement)?.value} - ${(document.getElementById('timeto6') as HTMLInputElement)?.value}`,
-        // day7: `${(document.getElementById('timefrom7') as HTMLInputElement)?.value} - ${(document.getElementById('timeto7') as HTMLInputElement)?.value}`,
-        // добавьте остальные дни по аналогии
-
-        day1: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-        day2: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-        day3: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-        day4: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-        day5: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-        day6: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-        day7: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
-    };
-
-    const newSettingsData = { city, workTime: [workTime], pay };
-    setCookie('city', newSettingsData.city);
-    setArrayCookie('workTime', newSettingsData.workTime);
-    setCookie('pay', newSettingsData.pay);
-    location.reload();
-}
-
 function deleteProfile() {
     deleteCookie('city');
     deleteCookie('workTime');
@@ -148,11 +110,58 @@ export default function Registration() {
 
     const t = translate[lang];
 
-    const [moreDogInfo, setDogInfo] = useState(-1);
+    const [showAllDays, setShowAllDays] = useState(false);
 
+    console.log(showAllDays);
     const cityName = getCookie('city');
     const workTimeData = getArrayCookie('workTime');
     const payData = getCookie('pay');
+
+    function uploadData() {
+        const cityElement = document.getElementById('city') as HTMLInputElement | null;
+        const payElement = document.getElementById('pay') as HTMLInputElement | null;
+
+        if (!cityElement || !payElement) {
+            console.error("Элементы не найдены");
+            return;
+        }
+
+        const city = cityElement.value;
+        const pay = payElement.value;
+
+        if (showAllDays) {
+            const workTime = {
+                day1: `${(document.getElementById('timefrom1') as HTMLInputElement)?.value} - ${(document.getElementById('timeto1') as HTMLInputElement)?.value}`,
+                day2: `${(document.getElementById('timefrom2') as HTMLInputElement)?.value} - ${(document.getElementById('timeto2') as HTMLInputElement)?.value}`,
+                day3: `${(document.getElementById('timefrom3') as HTMLInputElement)?.value} - ${(document.getElementById('timeto3') as HTMLInputElement)?.value}`,
+                day4: `${(document.getElementById('timefrom4') as HTMLInputElement)?.value} - ${(document.getElementById('timeto4') as HTMLInputElement)?.value}`,
+                day5: `${(document.getElementById('timefrom5') as HTMLInputElement)?.value} - ${(document.getElementById('timeto5') as HTMLInputElement)?.value}`,
+                day6: `${(document.getElementById('timefrom6') as HTMLInputElement)?.value} - ${(document.getElementById('timeto6') as HTMLInputElement)?.value}`,
+                day7: `${(document.getElementById('timefrom7') as HTMLInputElement)?.value} - ${(document.getElementById('timeto7') as HTMLInputElement)?.value}`,
+            };
+            const newSettingsData = { city, workTime: [workTime], pay };
+            setCookie('city', newSettingsData.city);
+            setArrayCookie('workTime', newSettingsData.workTime);
+            setCookie('pay', newSettingsData.pay);
+        } else {
+            const workTime = {
+                day1: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+                day2: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+                day3: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+                day4: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+                day5: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+                day6: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+                day7: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+            };
+            const newSettingsData = { city, workTime: [workTime], pay };
+            setCookie('city', newSettingsData.city);
+            setArrayCookie('workTime', newSettingsData.workTime);
+            setCookie('pay', newSettingsData.pay);
+        }
+
+        location.reload();
+    }
+
     return (
         <div className="content" >
             <div className="title">
@@ -171,62 +180,75 @@ export default function Registration() {
                             <h3>Настройте рабочий график</h3>
                         </div>
                         <div className="input-select-wrapper">
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Пн - Вс</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefromall" />
-                                    <input type="time" id="timetoall" />
+                            {
+                                showAllDays ? <div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Понедельник</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom1" />
+                                            <input type="time" id="timeto1" />
+                                        </div>
+                                    </div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Вторник</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom2" />
+                                            <input type="time" id="timeto2" />
+                                        </div>
+                                    </div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Среда</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom3" />
+                                            <input type="time" id="timeto3" />
+                                        </div>
+                                    </div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Четверг</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom4" />
+                                            <input type="time" id="timeto4" />
+                                        </div>
+                                    </div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Пятница</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom5" />
+                                            <input type="time" id="timeto5" />
+                                        </div>
+                                    </div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Суббота</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom6" />
+                                            <input type="time" id="timeto6" />
+                                        </div>
+                                    </div>
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Воскресенье</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefrom7" />
+                                            <input type="time" id="timeto7" />
+                                        </div>
+                                    </div>
+                                </div> :
+                                    <div className="input-select-time">
+                                        <h4 className="placeholder">Пн - Вс</h4>
+                                        <div className="select-time-inputs">
+                                            <input type="time" id="timefromall" />
+                                            <input type="time" id="timetoall" />
+                                        </div>
+                                    </div>
+                            }
+                            <div className="input-select-switcher">
+                                <div className="switcher">
+                                    <input type="checkbox" className="checkbox" id="checkbox" onClick={() => showAllDays ? setShowAllDays(false) : setShowAllDays(true)} />
+                                    <label className="switch" htmlFor="checkbox">
+                                        <span className="slider"></span>
+                                    </label>
                                 </div>
+                                <span className="switcher-label">Настроить каждый день</span>
                             </div>
-                            {/* <div className="input-select-time">
-                                <h4 className="placeholder">Понедельник</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom1" />
-                                    <input type="time" id="timeto1" />
-                                </div>
-                            </div>
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Вторник</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom2" />
-                                    <input type="time" id="timeto2" />
-                                </div>
-                            </div>
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Среда</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom3" />
-                                    <input type="time" id="timeto3" />
-                                </div>
-                            </div>
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Четверг</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom4" />
-                                    <input type="time" id="timeto4" />
-                                </div>
-                            </div>
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Пятница</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom5" />
-                                    <input type="time" id="timeto5" />
-                                </div>
-                            </div>
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Суббота</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom6" />
-                                    <input type="time" id="timeto6" />
-                                </div>
-                            </div>
-                            <div className="input-select-time">
-                                <h4 className="placeholder">Воскресенье</h4>
-                                <div className="input-select-time">
-                                    <input type="time" id="timefrom7" />
-                                    <input type="time" id="timeto7" />
-                                </div>
-                            </div> */}
                             <div className="input-title">
                                 <h3>Доход €/час</h3>
                             </div>
@@ -239,7 +261,7 @@ export default function Registration() {
                         </div>
                     </div> :
                     <div>
-                        {/* <p>Город {cityName}</p>
+                        <p>Город {cityName}</p>
                         <p>Понедельник {workTimeData[0].day1}</p>
                         <p>Вторник {workTimeData[0].day2}</p>
                         <p>Среда {workTimeData[0].day3}</p>
@@ -247,41 +269,10 @@ export default function Registration() {
                         <p>Пятница {workTimeData[0].day5}</p>
                         <p>Суббота {workTimeData[0].day6}</p>
                         <p>Воскресенье {workTimeData[0].day7}</p>
-                        <p>Доход {payData}€/час</p> */}
+                        <p>Доход {payData}€/час</p>
                         <button onClick={() => { deleteProfile() }}>Delete profile</button>
                     </div>
             }
-            {/* <div className="start-inputs">
-                <input type="text" id="city" placeholder="Введите ваш город" />
-                <input type="text" id="schedule" placeholder="Введите рабочий график" />
-                <input type="number" id="wage" placeholder="Введите часовую оплату" />
-                <button className="primary-btn">Сохранить</button>
-            </div> */}
-
-
-            {/* {
-                // moreDogInfo != -1 && <div>{data.ourDogs[moreDogInfo].name}</div>
-                moreDogInfo != -1 &&
-                <div className="dogInfo-wrapper">
-                    <div className="dogInfo-block">
-                        <div className="closeInfo" onClick={() => setDogInfo(-1)}>
-                            <img src={closeMenuIcon.src} alt="Navigacija" />
-                        </div>
-                        <div className="dog-img">
-                            <img src={getBgImg(data.ourDogs[moreDogInfo].name)} alt={data.ourDogs[moreDogInfo].name} />
-                        </div>
-                        <div className="dog-info">
-                            <h3>{data.ourDogs[moreDogInfo].name}</h3>
-                            <span>{t.sex[data.ourDogs[moreDogInfo].sex]}</span>
-                            <span>{t.birthday}: {data.ourDogs[moreDogInfo].birthday}</span>
-                            <span>{t.color}: {t.colorr[data.ourDogs[moreDogInfo].color]}</span>
-                            <div className="dog-desc">
-                                <p>{data.ourDogs[moreDogInfo].desc}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            } */}
         </div >
     )
 }
