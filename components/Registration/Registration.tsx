@@ -1,153 +1,256 @@
 'use client'
 
 import './Registration.scss';
-import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import React from "react";
-
-import data from "../../db.json";
-
-export interface DataList {
-    name: string,
-    sex: number,
-    birthday: string,
-    color: number,
-    desc: string;
-}
+import { useState } from 'react';
 
 const translate: any = {
     lt: {
-        title: 'Naudojimosi pradzia',
-        color: 'Spalva',
-        birthday: 'Gimimo data',
-        sex: {
-            1: 'Kalė',
-            2: 'Patinas',
-        },
-        colorr: {
-            1: 'Raudona su baltom dėmėm',
-            2: 'Raudona',
-            3: 'Juodos šerdelės su baltom dėmėm',
-            4: 'Auksinis',
-        },
-        more: 'Skaityti daugiau',
+        title: 'DrivePay | Начало работы',
     },
     en: {
-        title: 'Our dogs',
-        color: 'Color',
-        birthday: 'Date of Birth',
-        sex: {
-            1: 'Female',
-            2: 'Male',
-        },
-        colorr: {
-            1: 'Red with white spots',
-            2: 'Red',
-            3: 'Black cores with a white spot',
-            4: 'Gold',
-        },
-        more: 'Read more',
+        title: 'DrivePay | Начало работы',
     },
     ru: {
         title: 'DrivePay | Начало работы',
-        color: 'Цвет',
-        birthday: 'Дата рождения',
-        sex: {
-            1: 'Самка',
-            2: 'Самец',
-        },
-        colorr: {
-            1: 'Красный с белыми пятнами',
-            2: 'Красный',
-            3: 'Черные сердечки с белыми пятнами',
-            4: 'Золотой',
-        },
-        more: 'Читать дальше',
     }
 }
 
-export default function Card() {
+function setCookie(name: string, value: any, path = '/') {
+    const date = new Date();
+    date.setFullYear(date.getFullYear() + 10); // Устанавливаем срок действия на 10 лет вперёд
+    const expires = `expires=${date.toUTCString()}`;
 
+    // Создаем cookie строку
+    let cookieString = `${name}=${encodeURIComponent(value)}; ${expires}; path=${path}`;
+
+    // Добавляем домен, если нужно
+    // cookieString += "; domain=yourdomain.com"; // Раскомментировать, если нужен конкретный домен
+
+    // Устанавливаем cookie
+    document.cookie = cookieString;
+}
+
+function getCookie(name: string) {
+    if (typeof document === 'undefined') {
+        // Если код выполняется на сервере, возвращаем null
+        return null;
+    }
+
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) {
+            const value = decodeURIComponent(c.substring(nameEQ.length, c.length));
+
+            try {
+                // Пытаемся распарсить значение как JSON
+                return JSON.parse(value);
+            } catch (e) {
+                // Если это не валидный JSON, возвращаем значение как строку
+                return value;
+            }
+        }
+    }
+    return null; // Возвращаем null, если cookie не найдена
+}
+
+function setArrayCookie(name: string, array: any, path = '/') {
+    const stringifiedArray = JSON.stringify(array); // Преобразуем массив в строку
+    const date = new Date();
+    date.setFullYear(date.getFullYear() + 10); // Устанавливаем срок действия на 10 лет вперёд
+    const expires = `expires=${date.toUTCString()}`;
+
+    let cookieString = `${name}=${encodeURIComponent(stringifiedArray)}; ${expires}; path=${path}`;
+
+    document.cookie = cookieString;
+}
+
+function getArrayCookie(name: string) {
+    if (typeof document === 'undefined') {
+        // Если код выполняется на сервере, возвращаем null
+        return null;
+    }
+
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) {
+            const value = decodeURIComponent(c.substring(nameEQ.length, c.length));
+
+            try {
+                // Пытаемся распарсить значение как JSON
+                return JSON.parse(value);
+            } catch (e) {
+                // Если ошибка, возвращаем значение как строку
+                return value;
+            }
+        }
+    }
+    return null; // Возвращаем null, если cookie не найдена
+}
+
+function deleteCookie(name: string, path = '/') {
+    // Устанавливаем срок действия cookie в прошлом, чтобы удалить её
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}`;
+}
+
+function uploadData() {
+    const cityElement = document.getElementById('city') as HTMLInputElement | null;
+    const payElement = document.getElementById('pay') as HTMLInputElement | null;
+
+    if (!cityElement || !payElement) {
+        console.error("Элементы не найдены");
+        return;
+    }
+
+    const city = cityElement.value;
+    const pay = payElement.value;
+
+    const workTime = {
+        // day1: `${(document.getElementById('timefrom1') as HTMLInputElement)?.value} - ${(document.getElementById('timeto1') as HTMLInputElement)?.value}`,
+        // day2: `${(document.getElementById('timefrom2') as HTMLInputElement)?.value} - ${(document.getElementById('timeto2') as HTMLInputElement)?.value}`,
+        // day3: `${(document.getElementById('timefrom3') as HTMLInputElement)?.value} - ${(document.getElementById('timeto3') as HTMLInputElement)?.value}`,
+        // day4: `${(document.getElementById('timefrom4') as HTMLInputElement)?.value} - ${(document.getElementById('timeto4') as HTMLInputElement)?.value}`,
+        // day5: `${(document.getElementById('timefrom5') as HTMLInputElement)?.value} - ${(document.getElementById('timeto5') as HTMLInputElement)?.value}`,
+        // day6: `${(document.getElementById('timefrom6') as HTMLInputElement)?.value} - ${(document.getElementById('timeto6') as HTMLInputElement)?.value}`,
+        // day7: `${(document.getElementById('timefrom7') as HTMLInputElement)?.value} - ${(document.getElementById('timeto7') as HTMLInputElement)?.value}`,
+        // добавьте остальные дни по аналогии
+
+        day1: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+        day2: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+        day3: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+        day4: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+        day5: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+        day6: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+        day7: `${(document.getElementById('timefromall') as HTMLInputElement)?.value} - ${(document.getElementById('timetoall') as HTMLInputElement)?.value}`,
+    };
+
+    const newSettingsData = { city, workTime: [workTime], pay };
+    setCookie('city', newSettingsData.city);
+    setArrayCookie('workTime', newSettingsData.workTime);
+    setCookie('pay', newSettingsData.pay);
+    location.reload();
+}
+
+function deleteProfile() {
+    deleteCookie('city');
+    deleteCookie('workTime');
+    deleteCookie('pay');
+    location.reload();
+}
+
+export default function Registration() {
     const { lang } = useParams();
 
     const t = translate[lang];
 
     const [moreDogInfo, setDogInfo] = useState(-1);
 
+    const cityName = getCookie('city');
+    const workTimeData = getArrayCookie('workTime');
+    const payData = getCookie('pay');
     return (
         <div className="content" >
             <div className="title">
                 <h1>{t.title}</h1>
             </div>
-
-            <div className="start-inputs">
-                <div className="input-title">
-                    <h3>Выберите город</h3>
-                </div>
-                <div className="input-wrapper">
-                    <input type="text" id="city" placeholder="Vilnius, Kaunas, Klaipėda" />
-                </div>
-                <div className="input-title">
-                    <h3>Настройте рабочий график</h3>
-                </div>
-                <div className="input-select-wrapper">
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Понедельник</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
+            {
+                cityName == null && workTimeData == null && payData == null ?
+                    <div className="start-inputs">
+                        <div className="input-title">
+                            <h3>Выберите город</h3>
                         </div>
-                    </div>
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Вторник</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
+                        <div className="input-wrapper">
+                            <input type="text" id="city" placeholder="Vilnius, Kaunas, Klaipėda" />
                         </div>
-                    </div>
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Среда</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
+                        <div className="input-title">
+                            <h3>Настройте рабочий график</h3>
                         </div>
-                    </div>
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Четверг</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
+                        <div className="input-select-wrapper">
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Пн - Вс</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefromall" />
+                                    <input type="time" id="timetoall" />
+                                </div>
+                            </div>
+                            {/* <div className="input-select-time">
+                                <h4 className="placeholder">Понедельник</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom1" />
+                                    <input type="time" id="timeto1" />
+                                </div>
+                            </div>
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Вторник</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom2" />
+                                    <input type="time" id="timeto2" />
+                                </div>
+                            </div>
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Среда</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom3" />
+                                    <input type="time" id="timeto3" />
+                                </div>
+                            </div>
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Четверг</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom4" />
+                                    <input type="time" id="timeto4" />
+                                </div>
+                            </div>
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Пятница</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom5" />
+                                    <input type="time" id="timeto5" />
+                                </div>
+                            </div>
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Суббота</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom6" />
+                                    <input type="time" id="timeto6" />
+                                </div>
+                            </div>
+                            <div className="input-select-time">
+                                <h4 className="placeholder">Воскресенье</h4>
+                                <div className="input-select-time">
+                                    <input type="time" id="timefrom7" />
+                                    <input type="time" id="timeto7" />
+                                </div>
+                            </div> */}
+                            <div className="input-title">
+                                <h3>Доход €/час</h3>
+                            </div>
+                            <div className="input-wrapper">
+                                <input type="text" id="pay" placeholder="" />
+                            </div>
+                            <div className="button-wrapper">
+                                <button onClick={() => { uploadData() }}>Продолжить</button>
+                            </div>
                         </div>
+                    </div> :
+                    <div>
+                        {/* <p>Город {cityName}</p>
+                        <p>Понедельник {workTimeData[0].day1}</p>
+                        <p>Вторник {workTimeData[0].day2}</p>
+                        <p>Среда {workTimeData[0].day3}</p>
+                        <p>Четверг {workTimeData[0].day4}</p>
+                        <p>Пятница {workTimeData[0].day5}</p>
+                        <p>Суббота {workTimeData[0].day6}</p>
+                        <p>Воскресенье {workTimeData[0].day7}</p>
+                        <p>Доход {payData}€/час</p> */}
+                        <button onClick={() => { deleteProfile() }}>Delete profile</button>
                     </div>
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Пятница</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
-                        </div>
-                    </div>
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Суббота</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
-                        </div>
-                    </div>
-                    <div className="input-select-time">
-                        <h4 className="placeholder">Воскресенье</h4>
-                        <div className="input-select-time">
-                            <input type="time" id="timefrom" />
-                            <input type="time" id="timeto" />
-                        </div>
-                    </div>
-                    <div className="input-title">
-                        <h3>Доход €/час</h3>
-                    </div>
-                    <div className="input-wrapper">
-                        <input type="text" id="city" placeholder="" value="€" />
-                    </div>
-                </div>
-            </div>
+            }
             {/* <div className="start-inputs">
                 <input type="text" id="city" placeholder="Введите ваш город" />
                 <input type="text" id="schedule" placeholder="Введите рабочий график" />

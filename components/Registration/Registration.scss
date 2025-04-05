@@ -14,6 +14,7 @@
     }
 
     .start-inputs {
+        padding: 0 20px;
 
         .input-title {
             margin-bottom: 20px;
@@ -27,7 +28,6 @@
         .input-wrapper {
             input {
                 background: none;
-                height: 30px;
                 width: calc(100% - 60px);
                 padding: 16px 30px;
                 border-radius: 100px;
@@ -46,13 +46,14 @@
 
                 input {
                     background: none;
-                    height: 20px;
+                    height: 10px;
                     width: calc(100% - 60px);
-                    padding: 16px 30px;
+                    padding: 10px 30px;
                     border-radius: 100px;
                     border: 1px solid #D2D2D2;
                     color: #fff;
                     font-size: 14px;
+                    width: 100%;
 
                     &:nth-child(2) {
                         margin-left: 20px;
@@ -71,6 +72,20 @@
             //     color: #fff;
             //     font-size: 14px;
             // }
+        }
+
+        .button-wrapper {
+            margin-top: 20px;
+
+            button {
+                background: #7D19E0;
+                width: 100%;
+                padding: 16px 30px;
+                border-radius: 100px;
+                border: 1px solid #7D19E0;
+                color: #fff;
+                font-size: 14px;
+            }
         }
     }
 }

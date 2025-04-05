@@ -1,5 +1,6 @@
+import Registration from '@/components/Registration/Registration';
 import '../../styles/Home.scss';
-import Card from '@/components/Registration/Registration';
+import { getSettings } from '@/utils/getSettings';
 
 const dict: any = {
   lt: {
@@ -16,14 +17,14 @@ const dict: any = {
   }
 }
 
-export default function Home({ params }: any) {
+export default async function Home({ params }: any) {
 
   const title = dict[params.lang].title;
   const transportationRequest = dict[params.lang].transportationRequest;
-
+  const settings = await getSettings();
   return (
     <div className="frame">
-      <Card />
+      <Registration />
     </div>
   );
 }
