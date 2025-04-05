@@ -16,44 +16,44 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
   color: #D2D2D2;
   font-size: 14px;
-  overflow: hidden;
+  touch-action: manipulation;
 }
 
 .page-wrapper {
   display: flex;
   flex-wrap: wrap;
   max-width: 500px;
-  height: 100%;
   // width: calc(100% - 40px);
   margin: 0 auto;
   // padding: 0 20px;
-  position: relative
+  position: relative;
+  // overflow: hidden;
 }
 
 .frame {
   width: 100%;
 }
 
-.content::-webkit-scrollbar {
-  width: 0px;
-}
-
-.content::-webkit-scrollbar-track {
-  box-shadow: none;
-}
-
-.content::-webkit-scrollbar-thumb {
-  background-color: none;
-  outline: none;
-}
 
 .content {
   // margin: 50px 0 50px 0;
-  padding: 0 6px;
-  height: calc(100vh - 122px);
+  // height: calc(100vh - 122px);
+  // height: 100%;
   overflow: auto;
-  overflow-x: hidden;
-  scrollbar-track-color: red;
+  // overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: none;
+  outline: none;
 }
 
 .title {

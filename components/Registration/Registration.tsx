@@ -4,6 +4,15 @@ import './Registration.scss';
 import { useParams } from 'next/navigation';
 import React from "react";
 import { useState } from 'react';
+import daysData from '../../db.json';
+
+export interface DataList {
+    date: string,
+    workStart: string,
+    workFinish: string,
+    range: number,
+    pay: number;
+}
 
 const translate: any = {
     lt: {
@@ -112,7 +121,6 @@ export default function Registration() {
 
     const [showAllDays, setShowAllDays] = useState(false);
 
-    console.log(showAllDays);
     const cityName = getCookie('city');
     const workTimeData = getArrayCookie('workTime');
     const payData = getCookie('pay');
@@ -163,12 +171,12 @@ export default function Registration() {
     }
 
     return (
-        <div className="content" >
-            <div className="title">
-                <h1>{t.title}</h1>
-            </div>
-            {
-                cityName == null && workTimeData == null && payData == null ?
+        <div className="content">
+            {cityName == null && workTimeData == null && payData == null ?
+                <>
+                    <div className="title">
+                        <h1>{t.title}</h1>
+                    </div>
                     <div className="start-inputs">
                         <div className="input-title">
                             <h3>Выберите город</h3>
@@ -259,19 +267,36 @@ export default function Registration() {
                                 <button onClick={() => { uploadData() }}>Продолжить</button>
                             </div>
                         </div>
-                    </div> :
-                    <div>
-                        <p>Город {cityName}</p>
-                        <p>Понедельник {workTimeData[0].day1}</p>
-                        <p>Вторник {workTimeData[0].day2}</p>
-                        <p>Среда {workTimeData[0].day3}</p>
-                        <p>Четверг {workTimeData[0].day4}</p>
-                        <p>Пятница {workTimeData[0].day5}</p>
-                        <p>Суббота {workTimeData[0].day6}</p>
-                        <p>Воскресенье {workTimeData[0].day7}</p>
-                        <p>Доход {payData}€/час</p>
-                        <button onClick={() => { deleteProfile() }}>Delete profile</button>
                     </div>
+                </>
+                :
+                <>
+                    <div className="titleDate">
+                        <h3>{new Date().getDate()} апреля</h3>
+                    </div>
+                    <div className="add-new-day">
+                        <button>Ввести заработок</button>
+                    </div>
+                    <div className="prev-days">
+                        <span className='prev-offer'>Ранее</span>
+                        {
+                            daysData.days.map((item: DataList, index: number) => (
+                                <div key={index}>
+                                    <div className="day-wrapper">
+                                        <div className="day-and-offer">
+                                            <span className='day'>{item.date}</span>
+                                            <span className='offer'>20:00 - 04:00 | 326km</span>
+                                        </div>
+                                        <div className="pay">
+                                            <span>175€</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <button onClick={() => { deleteProfile() }}>Delete profile</button>
+                </>
             }
         </div >
     )
