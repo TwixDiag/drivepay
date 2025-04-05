@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    // basePath: '/drivepay',
+    basePath: '/drivepay',
     trailingSlash: true,
     // Can be safely removed in newer versions of Next.js
     future: {
