@@ -82,7 +82,7 @@ function ordersList(date: string) {
                         </div>
                     </div>
                     :
-                    <div key={index}></div>
+                    ''
             ))
         }
     </div>

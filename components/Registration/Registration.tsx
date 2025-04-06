@@ -4,7 +4,6 @@ import './Registration.scss';
 import { useParams } from 'next/navigation';
 import React from "react";
 import { useState } from 'react';
-import ordersData from '../../orders.json';
 import OrdersList from '../OrdersList/OrdersList';
 import setCookie from '@/utils/setCookie';
 import getCookie from '@/utils/getCookie';
