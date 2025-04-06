@@ -4,15 +4,13 @@ import './Registration.scss';
 import { useParams } from 'next/navigation';
 import React from "react";
 import { useState } from 'react';
-import daysData from '../../db.json';
-
-export interface DataList {
-    date: string,
-    workStart: string,
-    workFinish: string,
-    range: number,
-    pay: number;
-}
+import ordersData from '../../orders.json';
+import OrdersList from '../OrdersList/OrdersList';
+import setCookie from '@/utils/setCookie';
+import getCookie from '@/utils/getCookie';
+import getArrayCookie from '@/utils/getArrayCookie';
+import deleteCookie from '@/utils/deleteCookie';
+import setArrayCookie from '@/utils/setArrayCookie';
 
 const translate: any = {
     lt: {
@@ -24,87 +22,6 @@ const translate: any = {
     ru: {
         title: 'DrivePay | Начало работы',
     }
-}
-
-function setCookie(name: string, value: any, path = '/') {
-    const date = new Date();
-    date.setFullYear(date.getFullYear() + 10); // Устанавливаем срок действия на 10 лет вперёд
-    const expires = `expires=${date.toUTCString()}`;
-
-    // Создаем cookie строку
-    let cookieString = `${name}=${encodeURIComponent(value)}; ${expires}; path=${path}`;
-
-    // Добавляем домен, если нужно
-    // cookieString += "; domain=yourdomain.com"; // Раскомментировать, если нужен конкретный домен
-
-    // Устанавливаем cookie
-    document.cookie = cookieString;
-}
-
-function getCookie(name: string) {
-    if (typeof document === 'undefined') {
-        // Если код выполняется на сервере, возвращаем null
-        return null;
-    }
-
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i].trim();
-        if (c.indexOf(nameEQ) === 0) {
-            const value = decodeURIComponent(c.substring(nameEQ.length, c.length));
-
-            try {
-                // Пытаемся распарсить значение как JSON
-                return JSON.parse(value);
-            } catch (e) {
-                // Если это не валидный JSON, возвращаем значение как строку
-                return value;
-            }
-        }
-    }
-    return null; // Возвращаем null, если cookie не найдена
-}
-
-function setArrayCookie(name: string, array: any, path = '/') {
-    const stringifiedArray = JSON.stringify(array); // Преобразуем массив в строку
-    const date = new Date();
-    date.setFullYear(date.getFullYear() + 10); // Устанавливаем срок действия на 10 лет вперёд
-    const expires = `expires=${date.toUTCString()}`;
-
-    let cookieString = `${name}=${encodeURIComponent(stringifiedArray)}; ${expires}; path=${path}`;
-
-    document.cookie = cookieString;
-}
-
-function getArrayCookie(name: string) {
-    if (typeof document === 'undefined') {
-        // Если код выполняется на сервере, возвращаем null
-        return null;
-    }
-
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i].trim();
-        if (c.indexOf(nameEQ) === 0) {
-            const value = decodeURIComponent(c.substring(nameEQ.length, c.length));
-
-            try {
-                // Пытаемся распарсить значение как JSON
-                return JSON.parse(value);
-            } catch (e) {
-                // Если ошибка, возвращаем значение как строку
-                return value;
-            }
-        }
-    }
-    return null; // Возвращаем null, если cookie не найдена
-}
-
-function deleteCookie(name: string, path = '/') {
-    // Устанавливаем срок действия cookie в прошлом, чтобы удалить её
-    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}`;
 }
 
 function deleteProfile() {
@@ -124,6 +41,7 @@ export default function Registration() {
     const cityName = getCookie('city');
     const workTimeData = getArrayCookie('workTime');
     const payData = getCookie('pay');
+
 
     function uploadData() {
         const cityElement = document.getElementById('city') as HTMLInputElement | null;
@@ -271,31 +189,8 @@ export default function Registration() {
                 </>
                 :
                 <>
-                    <div className="titleDate">
-                        <h3>{new Date().getDate()} апреля</h3>
-                    </div>
-                    <div className="add-new-day">
-                        <button>Ввести заработок</button>
-                    </div>
-                    <div className="prev-days">
-                        <span className='prev-offer'>Ранее</span>
-                        {
-                            daysData.days.map((item: DataList, index: number) => (
-                                <div key={index}>
-                                    <div className="day-wrapper">
-                                        <div className="day-and-offer">
-                                            <span className='day'>{item.date}</span>
-                                            <span className='offer'>20:00 - 04:00 | 326km</span>
-                                        </div>
-                                        <div className="pay">
-                                            <span>175€</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
-                    <button onClick={() => { deleteProfile() }}>Delete profile</button>
+                    <OrdersList />
+                    {/* <button onClick={() => { deleteProfile() }}>Delete profile</button> */}
                 </>
             }
         </div >

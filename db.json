@@ -1,263 +1,221 @@
 {
     "days": [
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "06.04.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 0,
+            "pay": 0
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "05.04.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 100,
+            "pay": 38.8
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "04.04.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 0,
+            "pay": 0
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "03.04.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 100,
+            "pay": 164
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "02.04.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 100,
+            "pay": 172.7
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "01.04.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 0,
+            "pay": 0
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "31.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 240,
+            "pay": 240
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "30.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 100,
+            "pay": 39.1
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "29.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 63.6
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "28.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 69.75
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "27.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 77.5
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "26.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 94.4
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "25.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 62.4
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "24.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 131.5
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "23.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 108.3
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "22.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 42
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "21.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 0,
+            "pay": 0
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "20.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 20.6
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "19.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 36.5
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "18.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 0,
+            "pay": 0
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "17.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 64.5
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "16.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 106.2
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "15.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 72.9
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "14.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 84.9
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "13.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 106.6
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "12.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 131
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "11.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 140.5
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "10.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 149.6
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "09.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "range": 0,
+            "pay": 0
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "08.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
+            "pay": 196
         },
         {
-            "date": "Sat Apr 05 2025 13:12:12",
+            "date": "07.03.2025",
             "workStart": "20:00",
             "workFinish": "04:00",
             "range": 326,
-            "pay": 175
-        },
-        {
-            "date": "Sat Apr 05 2025 13:12:12",
-            "workStart": "20:00",
-            "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
-        },
-        {
-            "date": "Sat Apr 05 2025 13:12:12",
-            "workStart": "20:00",
-            "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
-        },
-        {
-            "date": "Sat Apr 05 2025 13:12:12",
-            "workStart": "20:00",
-            "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
-        },
-        {
-            "date": "Sat Apr 05 2025 13:12:12",
-            "workStart": "20:00",
-            "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
-        },
-        {
-            "date": "Sat Apr 05 2025 13:12:12",
-            "workStart": "20:00",
-            "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
-        },
-        {
-            "date": "Sat Apr 05 2025 13:12:12",
-            "workStart": "20:00",
-            "workFinish": "04:00",
-            "range": 326,
-            "pay": 175
+            "pay": 72.7
         }
     ]
 }

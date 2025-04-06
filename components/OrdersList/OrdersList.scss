@@ -1,0 +1,135 @@
+.content {
+
+    .titleDate {
+        width: 100%;
+        margin-bottom: 50px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-right: 20px;
+        }
+    }
+
+    .add-new-day {
+        margin-bottom: 50px;
+        padding: 0 20px;
+
+        button {
+            background: #7D19E0;
+            width: 100%;
+            padding: 16px 30px;
+            border-radius: 100px;
+            border: 1px solid #7D19E0;
+            color: #fff;
+            font-size: 14px;
+        }
+    }
+
+    .order-list-offer {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        padding: 0 20px;
+
+        span {
+            margin-bottom: 10px;
+        }
+    }
+
+    .prev-days {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+
+        .prev-offer {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .day-wrapper {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            width: calc(100% - 60px);
+            border-radius: 100px;
+            border: 1px solid #D2D2D2;
+            margin-bottom: 10px;
+
+            .day-and-offer {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+
+                .day {
+                    font-size: 14px;
+                }
+
+                .offer {
+                    font-size: 12px;
+                    color: rgba(255, 255, 255, 0.705);
+                }
+            }
+
+            .pay {
+                width: 50%;
+                text-align: right;
+
+                span {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .order-list-item {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 30px;
+        border-radius: 100px;
+        border: 1px solid #D2D2D2;
+        margin: 0 20px 10px 20px;
+
+        .order-item-dateandpay {
+            display: flex;
+            align-items: center;
+
+            .order-date {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+
+                .date {
+                    font-size: 14px;
+                }
+
+                .timeandrange {
+                    font-size: 12px;
+                    color: rgba(255, 255, 255, 0.705);
+                }
+            }
+
+            .order-pay {
+                width: 50%;
+                text-align: right;
+
+                .pay {
+                    font-size: 20px;
+                    font-weight: bolder;
+                }
+            }
+
+        }
+
+        .order-item-address {
+            .address {
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.705);
+            }
+        }
+    }
+}
