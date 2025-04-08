@@ -90,9 +90,16 @@ export default function AirportList() {
 
     console.log(dataHtml);
 
+    async function addNotif() {
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+            new Notification('Hi');
+        }
+    }
+
     return (
         <div className="content">
-            {
+            {/* {
                 dataHtml.map((item: Data, index: number) => (
                     <div key={index} className='airportLine'>
                         <div className="airportLine-title">
@@ -109,7 +116,8 @@ export default function AirportList() {
                         </div>
                     </div>
                 ))
-            }
+            } */}
+            <button onClick={() => addNotif()}>Уведомления</button>
         </div >
     )
 }
