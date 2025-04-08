@@ -1,3 +1,5 @@
+import AirportList from "@/components/AirportList/AirportList";
+
 const translate: any = {
     lt: {
         title: 'Skrydziai'
@@ -6,18 +8,18 @@ const translate: any = {
         title: 'About'
     },
     ru: {
-        title: 'О нас'
+        title: 'Аэропорт'
     }
 }
 
 export default function Airport({ params: { lang } }: any) {
-
     const t = translate[lang];
 
     return (
         <div className="content">
             <div className="title">
                 <h1>{t.title}</h1>
+                <AirportList />
             </div>
         </div>
     )

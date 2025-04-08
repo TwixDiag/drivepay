@@ -102,6 +102,13 @@ function formatDate(date: any) {
     return dd + '.' + mm + '.' + yy;
 }
 
+function getFullDate(date: Date) {
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    return month + '/' + day + '/' + year;
+}
+
 
 export default function OrdersList() {
     const { lang } = useParams();
@@ -111,8 +118,6 @@ export default function OrdersList() {
     const [showOrders, setShowOrders] = useState("none");
     const [showAddNewDay, setNewDay] = useState(0);
     let daysDataList = getCookie('daysList') || [0];
-
-    console.log(daysDataList);
 
     // deleteCookie('daysList');
 
@@ -201,10 +206,10 @@ export default function OrdersList() {
             {
                 showOrders == "none" ?
                     showAddNewDay ?
-                        <div className="addNewDay">
+                        <div className="add-new-day-form">
                             <input type="date" id="date" />
-                            <input type="number" id="pay" placeholder='Pay' />
-                            <input type="number" id="range" placeholder='Range' />
+                            <input type="number" id="pay" placeholder='Заработок' />
+                            <input type="number" id="range" placeholder='Расстояние' />
                             <button onClick={() => addNewDay()}>Сохранить</button>
                         </div>
                         :
