@@ -17,7 +17,7 @@ const translate: any = {
     }
 }
 
-function getHtml() {
+const GetHtml = () => {
 
     const [data, setData] = useState("");
     const hasFetched = useRef(false); // Проверка, был ли запрос
@@ -86,7 +86,7 @@ export default function AirportList() {
 
     const t = translate[lang];
 
-    const dataHtml = getHtml();
+    const dataHtml = GetHtml();
 
     console.log(dataHtml);
 
